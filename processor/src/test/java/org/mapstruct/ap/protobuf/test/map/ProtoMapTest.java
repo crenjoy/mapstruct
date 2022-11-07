@@ -1,33 +1,37 @@
 
 package org.mapstruct.ap.protobuf.test.map;
 
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Assertions;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageMap;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageMapOrBuilder;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageProto;
+import org.mapstruct.ap.protobuf.test._target.ProtoMapListBuilder;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanList;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanMap;
 import org.mapstruct.ap.protobuf.test.source.BeanMapListBuilder;
-import org.mapstruct.ap.testutil.IssueKey;
 import org.mapstruct.ap.testutil.ProcessorTest;
 import org.mapstruct.ap.testutil.WithClasses;
-import org.mapstruct.ap.testutil.runner.GeneratedSource;
 
 @WithClasses({ BasicTestBeanMap.class, BasicTestBeanList.class, BeanMapListBuilder.class,
-     BasicTestMessageProto.class, BasicTestMessageMapOrBuilder.class,BasicTestMessageMap.class,
+    BasicTestMessageProto.class, BasicTestMessageMapOrBuilder.class, BasicTestMessageMap.class,
     ProtoMapMapper.class })
-@IssueKey("108")
 public class ProtoMapTest {
 
-  @RegisterExtension
-  final GeneratedSource generatedSource = new GeneratedSource()
-      .addComparisonToFixtureFor(ProtoMapMapper.class);
+  @ProcessorTest
+  public void testToMap() {
+    BasicTestBeanMap source = BeanMapListBuilder.getMapFull();
+    BasicTestMessageMap actual = ProtoMapMapper.INSTANCE.toMap(source);
+    Assertions.assertEquals(ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
+        actual.getTestStrMapMap());
+  }
 
   @ProcessorTest
-  public void test() {
-    // com.google.protobuf.ByteString
+  public void testUpdateMap() {
     BasicTestBeanMap source = BeanMapListBuilder.getMapFull();
-    BasicTestMessageMap dto = ProtoMapMapper.INSTANCE.toMap(source);
+    BasicTestMessageMap actual = ProtoMapListBuilder.getMapNull();
+    actual = ProtoMapMapper.INSTANCE.updateMap(actual, source);
+    Assertions.assertEquals(ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
+        actual.getTestStrMapMap());
   }
 
 }
