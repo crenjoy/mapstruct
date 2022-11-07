@@ -24,6 +24,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import javax.tools.Diagnostic.Kind;
+
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.ConfigurationLoader;
 import com.puppycrawl.tools.checkstyle.DefaultLogger;
@@ -109,6 +111,7 @@ abstract class CompilingExtension implements BeforeEachCallback {
                 "core" + File.separator + "target",
                 // MapStruct annotations in single module build
                 "org" + File.separator + "mapstruct" + File.separator + "mapstruct" + File.separator,
+                "com" + File.separator +"google"+File.separator +"protobuf",
                 "guava"
         );
 
@@ -178,8 +181,17 @@ abstract class CompilingExtension implements BeforeEachCallback {
                 "Compilation succeeded but should have failed."
             ).isEqualTo( CompilationResult.FAILED );
         }
+        
+        //Remove protobuf WARNING
+        List<DiagnosticDescriptor> actualDiagnostics= new ArrayList<>();
+        for(DiagnosticDescriptor diagnosticDescriptor : actualResult.getDiagnostics()) {
+          // mergeFrom, clearField, clearOneof,  unknownFields, mergeUnknownFields, allFields
+          if (!Kind.WARNING.equals(diagnosticDescriptor.getKind()) && diagnosticDescriptor.getMessage().contains("mergeUnknownFields") ) {
+            actualDiagnostics.add(diagnosticDescriptor);
+          }
+        }
 
-        assertDiagnostics( actualResult.getDiagnostics(), expectedResult.getDiagnostics() );
+        assertDiagnostics(actualDiagnostics, expectedResult.getDiagnostics() );
         assertNotes( actualResult.getNotes(), expectedResult.getNotes() );
 
         if ( !findAnnotation( testClass, DisableCheckstyle.class ).isPresent() ) {
