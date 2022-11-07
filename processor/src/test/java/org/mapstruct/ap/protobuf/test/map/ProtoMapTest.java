@@ -1,3 +1,8 @@
+/*
+ * Copyright MapStruct Authors.
+ *
+ * Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+ */
 
 package org.mapstruct.ap.protobuf.test.map;
 
@@ -24,18 +29,18 @@ public class ProtoMapTest {
   @ProcessorTest
   public void testToMap() {
     BasicTestBeanMap source = BeanMapListBuilder.getMapFull();
-    BasicTestMessageMap actual = ProtoMapMapper.INSTANCE.toMap(source);
-    Assertions.assertEquals(ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
-        actual.getTestStrMapMap());
+    BasicTestMessageMap actual = ProtoMapMapper.INSTANCE.toMap( source );
+    Assertions.assertEquals( ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
+        actual.getTestStrMapMap() );
   }
 
   @ProcessorTest
   public void testUpdateMap() {
     BasicTestBeanMap source = BeanMapListBuilder.getMapFull();
     BasicTestMessageMap actual = ProtoMapListBuilder.getMapNull();
-    actual = ProtoMapMapper.INSTANCE.updateMap(actual, source);
-    Assertions.assertEquals(ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
-        actual.getTestStrMapMap());
+    actual = ProtoMapMapper.INSTANCE.updateMap( actual, source );
+    Assertions.assertEquals( ProtoMapListBuilder.getMapFull().getTestStrMapMap(),
+        actual.getTestStrMapMap() );
   }
 
 }

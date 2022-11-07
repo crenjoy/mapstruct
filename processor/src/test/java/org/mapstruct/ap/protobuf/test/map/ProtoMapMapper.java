@@ -1,16 +1,19 @@
+/*
+ * Copyright MapStruct Authors.
+ *
+ * Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+ */
 
 package org.mapstruct.ap.protobuf.test.map;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageMap;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanMap;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@org.mapstruct.Mapper
 public interface ProtoMapMapper {
 
-  ProtoMapMapper INSTANCE = Mappers.getMapper(ProtoMapMapper.class);
+  ProtoMapMapper INSTANCE = Mappers.getMapper( ProtoMapMapper.class );
 
   BasicTestMessageMap toMap(BasicTestBeanMap beanMap);
 
@@ -19,9 +22,9 @@ public interface ProtoMapMapper {
    */
   default BasicTestMessageMap updateMap(BasicTestMessageMap msgMap, BasicTestBeanMap beanMap) {
     BasicTestMessageMap.Builder builder = msgMap.toBuilder();
-    updateMap(builder, beanMap);
+    updateMap( builder, beanMap );
     return builder.build();
   }
 
-  void updateMap(@MappingTarget BasicTestMessageMap.Builder msgMap, BasicTestBeanMap beanMap);
+  void updateMap(@org.mapstruct.MappingTarget BasicTestMessageMap.Builder msgMap, BasicTestBeanMap beanMap);
 }

@@ -1,3 +1,8 @@
+/*
+ * Copyright MapStruct Authors.
+ *
+ * Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+ */
 
 package org.mapstruct.ap.protobuf.test.source;
 
@@ -13,6 +18,11 @@ import java.util.HashMap;
  */
 public class BeanMapListBuilder {
 
+  protected BeanMapListBuilder() {
+    throw new UnsupportedOperationException();
+  }
+
+  /** Null Map . */
   public static BasicTestBeanMap getMapNull() {
     return new BasicTestBeanMap();
   }
@@ -30,14 +40,14 @@ public class BeanMapListBuilder {
     map.testStrMap = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
       {
-        put("a", "a----a");
-        put("b", "b----b");
-        put("c", "c----c");
+        put( "a", "a----a" );
+        put( "b", "b----b" );
+        put( "c", "c----c" );
       }
     };
     return map;
   }
-  
+
   /** Default Map. */
   public static BasicTestBeanMap getMapDefault() {
     BasicTestBeanMap map = new BasicTestBeanMap();
@@ -45,11 +55,11 @@ public class BeanMapListBuilder {
       private static final long serialVersionUID = 1L;
 
       {
-        put("a", "a----a");
-        put("b", "b----b");
-        put("c", "c----c");
-        put("d", "");
-        put("", "IS NULL");
+        put( "a", "a----a" );
+        put( "b", "b----b" );
+        put( "c", "c----c" );
+        put( "d", "" );
+        put( "", "IS NULL" );
       }
     };
     return map;
@@ -62,11 +72,11 @@ public class BeanMapListBuilder {
       private static final long serialVersionUID = 1L;
 
       {
-        put("a", "a----a");
-        put("b", "b----b");
-        put("c", "c----c");
-        put("d", null);
-        put(null, "IS NULL");
+        put( "a", "a----a" );
+        put( "b", "b----b" );
+        put( "c", "c----c" );
+        put( "d", null );
+        put( null, "IS NULL" );
       }
     };
     return map;
@@ -86,21 +96,21 @@ public class BeanMapListBuilder {
   /** Full List. */
   public static BasicTestBeanList getListFull() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrList = Arrays.asList("a", "b", "c");
+    list.testStrList = Arrays.asList( "a", "b", "c" );
     return list;
   }
-  
+
   /** Default List. */
   public static BasicTestBeanList getListDefault() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrList = Arrays.asList("a", "b", "c", "");
+    list.testStrList = Arrays.asList( "a", "b", "c", "" );
     return list;
   }
 
   /** Exception List. */
   public static BasicTestBeanList getListException() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrList = Arrays.asList("a", "b", "c", null);
+    list.testStrList = Arrays.asList( "a", "b", "c", null );
     return list;
   }
 }

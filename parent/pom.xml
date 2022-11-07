@@ -368,7 +368,7 @@
                             specified as patterns within a source folder, so we can't exclude generated-sources
                             altogether
                         -->
-                        <excludes>**/*Gem.java,*/itest/jaxb/xsd/*</excludes>
+                        <excludes>**/*Gem.java,*/itest/jaxb/xsd/*,**/protobuf/test/_target/*.java</excludes>
                     </configuration>
                     <dependencies>
                         <dependency>

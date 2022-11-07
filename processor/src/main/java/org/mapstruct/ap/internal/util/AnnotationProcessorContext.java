@@ -32,7 +32,6 @@ import org.mapstruct.ap.spi.ImmutablesAccessorNamingStrategy;
 import org.mapstruct.ap.spi.ImmutablesBuilderProvider;
 import org.mapstruct.ap.spi.MapStructProcessingEnvironment;
 import org.mapstruct.ap.spi.NoOpBuilderProvider;
-import org.mapstruct.ap.spi.ProtobufAccessorNamingStrategy;
 
 /**
  * Keeps contextual data in the scope of the entire annotation processor ("application scope").

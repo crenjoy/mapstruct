@@ -1,3 +1,8 @@
+/*
+ * Copyright MapStruct Authors.
+ *
+ * Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+ */
 
 package org.mapstruct.ap.protobuf.test._target;
 
@@ -15,12 +20,18 @@ import java.util.Map;
  */
 public class ProtoMapListBuilder {
 
+  protected ProtoMapListBuilder() {
+    throw new UnsupportedOperationException();
+  }
+
+  /** Null Map . */
   public static BasicTestMessageMap getMapNull() {
     return BasicTestMessageMap.newBuilder().build();
   }
 
+  /** Empty Map . */
   public static BasicTestMessageMap getMapEmpty() {
-    return BasicTestMessageMap.newBuilder().putAllTestStrMap(Collections.emptyMap()).build();
+    return BasicTestMessageMap.newBuilder().putAllTestStrMap( Collections.emptyMap() ).build();
   }
 
   /** Full Map . */
@@ -28,12 +39,12 @@ public class ProtoMapListBuilder {
     Map<String, String> maps = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
       {
-        put("a", "a----a");
-        put("b", "b----b");
-        put("c", "c----c");
+        put( "a", "a----a" );
+        put( "b", "b----b" );
+        put( "c", "c----c" );
       }
     };
-    BasicTestMessageMap map = BasicTestMessageMap.newBuilder().putAllTestStrMap(maps).build();
+    BasicTestMessageMap map = BasicTestMessageMap.newBuilder().putAllTestStrMap( maps ).build();
     return map;
   }
 
@@ -42,14 +53,14 @@ public class ProtoMapListBuilder {
     Map<String, String> maps = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
       {
-        put("a", "a----a");
-        put("b", "b----b");
-        put("c", "c----c");
-        put("d", "");
-        put("", "IS NULL");
+        put( "a", "a----a" );
+        put( "b", "b----b" );
+        put( "c", "c----c" );
+        put( "d", "" );
+        put( "", "IS NULL" );
       }
     };
-    BasicTestMessageMap map = BasicTestMessageMap.newBuilder().putAllTestStrMap(maps).build();
+    BasicTestMessageMap map = BasicTestMessageMap.newBuilder().putAllTestStrMap( maps ).build();
     return map;
   }
 
@@ -58,16 +69,16 @@ public class ProtoMapListBuilder {
   }
 
   public static BasicTestMessageList getListEmpty() {
-    return BasicTestMessageList.newBuilder().addAllTestStrList(Collections.emptyList()).build();
+    return BasicTestMessageList.newBuilder().addAllTestStrList( Collections.emptyList() ).build();
   }
 
   public static BasicTestMessageList getListFull() {
-    List<String> list = Arrays.asList("a", "b", "c");
-    return BasicTestMessageList.newBuilder().addAllTestStrList(list).build();
+    List<String> list = Arrays.asList( "a", "b", "c" );
+    return BasicTestMessageList.newBuilder().addAllTestStrList( list ).build();
   }
 
   public static BasicTestMessageList getListDefault() {
-    List<String> list = Arrays.asList("a", "b", "c", "");
-    return BasicTestMessageList.newBuilder().addAllTestStrList(list).build();
+    List<String> list = Arrays.asList( "a", "b", "c", "" );
+    return BasicTestMessageList.newBuilder().addAllTestStrList( list ).build();
   }
 }
