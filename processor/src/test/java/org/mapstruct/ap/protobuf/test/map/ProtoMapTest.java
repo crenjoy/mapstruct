@@ -9,12 +9,16 @@ import org.mapstruct.ap.protobuf.test._target.ProtoMapListBuilder;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanList;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanMap;
 import org.mapstruct.ap.protobuf.test.source.BeanMapListBuilder;
+import org.mapstruct.ap.spi.AccessorNamingStrategy;
+import org.mapstruct.ap.spi.ProtobufAccessorNamingStrategy;
 import org.mapstruct.ap.testutil.ProcessorTest;
 import org.mapstruct.ap.testutil.WithClasses;
+import org.mapstruct.ap.testutil.WithServiceImplementation;
 
 @WithClasses({ BasicTestBeanMap.class, BasicTestBeanList.class, BeanMapListBuilder.class,
     BasicTestMessageProto.class, BasicTestMessageMapOrBuilder.class, BasicTestMessageMap.class,
     ProtoMapMapper.class })
+@WithServiceImplementation(provides = AccessorNamingStrategy.class, value = ProtobufAccessorNamingStrategy.class)
 public class ProtoMapTest {
 
   @ProcessorTest

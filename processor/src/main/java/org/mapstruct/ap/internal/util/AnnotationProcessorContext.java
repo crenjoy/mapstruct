@@ -95,13 +95,6 @@ public class AnnotationProcessorContext implements MapStructProcessingEnvironmen
                 messager.printMessage( Diagnostic.Kind.NOTE, "MapStruct: Freebuilder found on classpath" );
             }
         }
-        else if ( elementUtils.getTypeElement( ProtobufAccessorNamingStrategy.PROTOBUF_MESSAGE_OR_BUILDER ) != null ) {
-          defaultAccessorNamingStrategy = new ProtobufAccessorNamingStrategy();
-          defaultBuilderProvider = new DefaultBuilderProvider();
-          if ( verbose ) {
-              messager.printMessage( Diagnostic.Kind.NOTE, "MapStruct: Protobuf found on classpath" );
-          }
-        }
         else {
             defaultAccessorNamingStrategy = new DefaultAccessorNamingStrategy();
             defaultBuilderProvider = new DefaultBuilderProvider();

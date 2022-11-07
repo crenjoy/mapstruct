@@ -8,10 +8,13 @@ import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 
+import org.mapstruct.util.Experimental;
+
 /**
  * @author Thomas Kratz
  * @author Filip Hrisafov
  */
+@Experimental("The Protobuf accessor naming strategy might change in a subsequent release")
 public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrategy {
 
     public static final String PROTOBUF_MESSAGE_OR_BUILDER = "com.google.protobuf.MessageOrBuilder";

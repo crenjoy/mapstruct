@@ -186,7 +186,7 @@ abstract class CompilingExtension implements BeforeEachCallback {
         List<DiagnosticDescriptor> actualDiagnostics= new ArrayList<>();
         for(DiagnosticDescriptor diagnosticDescriptor : actualResult.getDiagnostics()) {
           // mergeFrom, clearField, clearOneof,  unknownFields, mergeUnknownFields, allFields
-          if (!Kind.WARNING.equals(diagnosticDescriptor.getKind()) && diagnosticDescriptor.getMessage().contains("mergeUnknownFields") ) {
+          if (!(Kind.WARNING.equals(diagnosticDescriptor.getKind()) && diagnosticDescriptor.getMessage().contains("mergeUnknownFields") )) {
             actualDiagnostics.add(diagnosticDescriptor);
           }
         }
