@@ -45,7 +45,7 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
         String methodName = method.getSimpleName().toString();
         String returnTypeName = typeUtils.erasure( method.getReturnType() ).toString();
         if (getterMethod && isProtoBufMethod( method ) && !methodName.endsWith( "List" )
-            && returnTypeName.equals( List.class.getName() )) {
+            && isGetterListMethod( returnTypeName )) {
             return false;
         }
         if (getterMethod && isProtoBufMethod( method ) && !methodName.endsWith( "Map" )
@@ -64,7 +64,7 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
 
         String returnTypeName = typeUtils.erasure( getterOrSetterMethod.getReturnType() ).toString();
         if (isProtoBufMethod( getterOrSetterMethod ) && propertyName.endsWith( "List" )
-            && returnTypeName.equals( List.class.getName() )) {
+            && isGetterListMethod( returnTypeName )) {
             propertyName = propertyName.substring( 0, propertyName.length() - 4 );
             return propertyName;
         }
@@ -74,6 +74,16 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
             return propertyName;
         }
         return propertyName;
+    }
+    
+    /**
+     * is Getter List Method?
+     * @param returnTypeName
+     * @return
+     */
+    protected boolean isGetterListMethod(String returnTypeName) {
+      return returnTypeName.equals( List.class.getName() ) 
+          || returnTypeName.equals( "com.google.protobuf.ProtocolStringList" );
     }
 
     /**
