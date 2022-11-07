@@ -11,7 +11,6 @@ import com.google.protobuf.ProtocolStringList;
 
 import java.util.List;
 
-import org.mapstruct.MappingTarget;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageList;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanList;
 import org.mapstruct.factory.Mappers;
@@ -33,18 +32,18 @@ public interface ProtoListMapper {
     return builder.build();
   }
 
-  void updateList(@MappingTarget BasicTestMessageList.Builder msgList, BasicTestBeanList beanList);
-  
+  void updateList(@org.mapstruct.MappingTarget BasicTestMessageList.Builder msgList, BasicTestBeanList beanList);
+
   /** ProtocolStringList is List String SubClass. */
   default List<String> toListString(ProtocolStringList value) {
     return (List<String>) value;
   }
-  
+
   /** List String To ProtocolStringList. */
   default ProtocolStringList toListString(List<String> value) {
     ProtocolStringList protoList = new LazyStringArrayList();
-    protoList.addAll(value);
+    protoList.addAll( value );
     return protoList;
   }
-  
+
 }

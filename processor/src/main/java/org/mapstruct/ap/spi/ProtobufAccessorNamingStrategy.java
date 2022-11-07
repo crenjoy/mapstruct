@@ -75,14 +75,14 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
         }
         return propertyName;
     }
-    
+
     /**
      * is Getter List Method?
      * @param returnTypeName
      * @return
      */
     protected boolean isGetterListMethod(String returnTypeName) {
-      return returnTypeName.equals( List.class.getName() ) 
+      return returnTypeName.equals( List.class.getName() )
           || returnTypeName.equals( "com.google.protobuf.ProtocolStringList" );
     }
 

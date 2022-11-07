@@ -25,7 +25,7 @@ import org.mapstruct.ap.testutil.WithServiceImplementation;
     ProtoListMapper.class })
 @WithServiceImplementation(provides = AccessorNamingStrategy.class, value = ProtobufAccessorNamingStrategy.class)
 public class ProtoListTest {
-  
+
   @ProcessorTest
   public void testToList() {
     BasicTestBeanList source = BeanMapListBuilder.getListFull();
