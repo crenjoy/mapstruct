@@ -32,6 +32,7 @@ import org.mapstruct.ap.spi.ImmutablesAccessorNamingStrategy;
 import org.mapstruct.ap.spi.ImmutablesBuilderProvider;
 import org.mapstruct.ap.spi.MapStructProcessingEnvironment;
 import org.mapstruct.ap.spi.NoOpBuilderProvider;
+import org.mapstruct.ap.spi.ProtobufAccessorNamingStrategy;
 
 /**
  * Keeps contextual data in the scope of the entire annotation processor ("application scope").
@@ -93,6 +94,13 @@ public class AnnotationProcessorContext implements MapStructProcessingEnvironmen
             if ( verbose ) {
                 messager.printMessage( Diagnostic.Kind.NOTE, "MapStruct: Freebuilder found on classpath" );
             }
+        }
+        else if ( elementUtils.getTypeElement( ProtobufAccessorNamingStrategy.PROTOBUF_MESSAGE_OR_BUILDER ) != null ) {
+          defaultAccessorNamingStrategy = new ProtobufAccessorNamingStrategy();
+          defaultBuilderProvider = new DefaultBuilderProvider();
+          if ( verbose ) {
+              messager.printMessage( Diagnostic.Kind.NOTE, "MapStruct: Protobuf found on classpath" );
+          }
         }
         else {
             defaultAccessorNamingStrategy = new DefaultAccessorNamingStrategy();
