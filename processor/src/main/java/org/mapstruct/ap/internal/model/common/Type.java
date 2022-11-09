@@ -349,37 +349,17 @@ public class Type extends ModelElement implements Comparable<Type> {
     }
 
     /**
-     * CollectionType and typeParameters is Protobuf Primitive.
+     * Only Protobuf Message , Not Protobuf Builder.
      */
-    public boolean isProtobufPrimitiveCollectionType() {
-        if (isCollectionType) {
-            if ("com.google.protobuf.ProtocolStringList".equals( this.qualifiedName )) {
-              return true;
-            }
-            List<Type> typeParameters = getTypeParameters();
-            if ( typeParameters.size() == 1 && typeParameters.get( 0 ).packageName.equals( "java.lang" ) ) {
-                return true;
-            }
+    public boolean isProtobufMessageReturnType() {
+        TypeElement builderType = elementUtils.getTypeElement( "com.google.protobuf.Message.Builder" );
+        TypeElement messageOrBuilderType = elementUtils.getTypeElement( "com.google.protobuf.MessageOrBuilder" );
+        if (null == builderType || null == messageOrBuilderType) {
+            return false;
         }
-        return false;
-    }
-
-    /**
-     * MapType and TypeParameters is Protobuf Primitive.
-     */
-    public boolean isProtobufPrimitiveMapType() {
-        if (isMapType) {
-            List<Type> typeParameters = getTypeParameters();
-            if ( typeParameters.size() == 2 && typeParameters.get( 0 ).packageName.equals( "java.lang" )
-                && typeParameters.get( 1 ).packageName.equals( "java.lang" ) ) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isProtobufPrimitiveCollectionOrMapType() {
-      return isProtobufPrimitiveCollectionType() || isProtobufPrimitiveMapType();
+        boolean isBuilder = typeUtils.isAssignable( this.typeMirror, builderType.asType() );
+        boolean isMessageOrBuilderType = typeUtils.isAssignable( this.typeMirror, messageOrBuilderType.asType() );
+        return isMessageOrBuilderType && !isBuilder;
     }
 
     public boolean isArrayType() {

@@ -87,6 +87,11 @@
         </#if>
 
     </#if>
+
+    <#if existingInstanceMapping && returnType.protobufMessageReturnType >
+        throw new IllegalArgumentException("Only Support ${returnType?string}.toBuilder() , Not Support Protobuf Message. ");
+    </#if>
+
     <#list beforeMappingReferencesWithMappingTarget as callback>
     	<@includeModel object=callback targetBeanName=resultName targetType=targetType/>
     	<#if !callback_has_next>
