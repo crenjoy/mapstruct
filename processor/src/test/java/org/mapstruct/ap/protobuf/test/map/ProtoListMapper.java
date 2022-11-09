@@ -11,14 +11,20 @@ import com.google.protobuf.ProtocolStringList;
 
 import java.util.List;
 
+import org.mapstruct.ap.protobuf.test._target.BasicTestIntMessageList;
 import org.mapstruct.ap.protobuf.test._target.BasicTestMessageList;
 import org.mapstruct.ap.protobuf.test.source.BasicTestBeanList;
+import org.mapstruct.ap.protobuf.test.source.BasicTestIntBeanList;
 import org.mapstruct.factory.Mappers;
 
 @org.mapstruct.Mapper
 public interface ProtoListMapper {
 
   ProtoListMapper INSTANCE = Mappers.getMapper( ProtoListMapper.class );
+
+  BasicTestIntMessageList toIntList(BasicTestIntBeanList beanList);
+
+  void updateIntList(@org.mapstruct.MappingTarget BasicTestIntMessageList.Builder mlist, BasicTestIntBeanList blist);
 
   BasicTestMessageList toList(BasicTestBeanList beanList);
 

@@ -45,6 +45,11 @@ public final class BasicTestMessageProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_crenjoy_protobuf_BasicTestMessageList_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_crenjoy_protobuf_BasicTestIntMessageList_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_crenjoy_protobuf_BasicTestIntMessageList_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_crenjoy_protobuf_TestMessageMap_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -105,40 +110,41 @@ public final class BasicTestMessageProto {
       "icTestMessageMap.TestStrMapEntry\0321\n\017Test" +
       "StrMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:" +
       "\0028\001\"-\n\024BasicTestMessageList\022\025\n\rtest_str_" +
-      "list\030\001 \003(\t\"\266\001\n\016TestMessageMap\022J\n\016test_ba" +
-      "sic_map\030\001 \003(\01322.crenjoy.protobuf.TestMes" +
-      "sageMap.TestBasicMapEntry\032X\n\021TestBasicMa" +
-      "pEntry\022\013\n\003key\030\001 \001(\t\0222\n\005value\030\002 \001(\0132#.cre" +
-      "njoy.protobuf.Basic2TestMessage:\0028\001\"O\n\017T" +
-      "estMessageList\022<\n\017test_basic_list\030\001 \003(\0132" +
-      "#.crenjoy.protobuf.Basic2TestMessage\"\204\005\n" +
-      "\021NestedTestMessage\022\023\n\013test_string\030\001 \001(\t\022" +
-      "\023\n\013test_double\030\002 \001(\001\022\021\n\ttest_bool\030\003 \001(\010\022" +
-      "<\n\017test_basic_bean\030\004 \001(\0132#.crenjoy.proto" +
-      "buf.Basic2TestMessage\022I\n\014test_str_map\030\005 " +
-      "\003(\01323.crenjoy.protobuf.NestedTestMessage" +
-      ".TestStrMapEntry\022\025\n\rtest_str_list\030\006 \003(\t\022" +
-      "M\n\016test_basic_map\030\007 \003(\01325.crenjoy.protob" +
-      "uf.NestedTestMessage.TestBasicMapEntry\022<" +
-      "\n\017test_basic_list\030\010 \003(\0132#.crenjoy.protob" +
-      "uf.Basic2TestMessage\022<\n\021test_message_lis" +
-      "t\030\t \001(\0132!.crenjoy.protobuf.TestMessageLi" +
-      "st\022:\n\020test_message_map\030\n \001(\0132 .crenjoy.p" +
-      "rotobuf.TestMessageMap\0321\n\017TestStrMapEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\032X\n\021Tes" +
-      "tBasicMapEntry\022\013\n\003key\030\001 \001(\t\0222\n\005value\030\002 \001" +
-      "(\0132#.crenjoy.protobuf.Basic2TestMessage:" +
-      "\0028\001\"\335\002\n\022ConvertTestMessage\022\034\n\024test_local" +
-      "_date_time\030\001 \001(\t\022\027\n\017test_local_date\030\002 \001(" +
-      "\t\022\027\n\017test_local_time\030\003 \001(\t\022\024\n\014test_insta" +
-      "nt\030\004 \001(\t\022\025\n\rtest_duration\030\005 \001(\t\022\035\n\025test_" +
-      "offset_date_time\030\006 \001(\t\022\030\n\020test_offset_ti" +
-      "me\030\007 \001(\t\022\034\n\024test_zoned_date_time\030\010 \001(\t\022\025" +
-      "\n\rtest_str_enum\030\t \001(\t\022\025\n\rtest_int_enum\030\n" +
-      " \001(\005\022\030\n\020test_big_decimal\030\013 \001(\t\022\030\n\020test_b" +
-      "ig_integer\030\014 \001(\t\022\021\n\ttest_uuid\030\r \001(\tB@\n%o" +
-      "rg.mapstruct.ap.protobuf.test.targetB\025Ba" +
-      "sicTestMessageProtoP\001b\006proto3"
+      "list\030\001 \003(\t\"0\n\027BasicTestIntMessageList\022\025\n" +
+      "\rtest_int_list\030\001 \003(\005\"\266\001\n\016TestMessageMap\022" +
+      "J\n\016test_basic_map\030\001 \003(\01322.crenjoy.protob" +
+      "uf.TestMessageMap.TestBasicMapEntry\032X\n\021T" +
+      "estBasicMapEntry\022\013\n\003key\030\001 \001(\t\0222\n\005value\030\002" +
+      " \001(\0132#.crenjoy.protobuf.Basic2TestMessag" +
+      "e:\0028\001\"O\n\017TestMessageList\022<\n\017test_basic_l" +
+      "ist\030\001 \003(\0132#.crenjoy.protobuf.Basic2TestM" +
+      "essage\"\204\005\n\021NestedTestMessage\022\023\n\013test_str" +
+      "ing\030\001 \001(\t\022\023\n\013test_double\030\002 \001(\001\022\021\n\ttest_b" +
+      "ool\030\003 \001(\010\022<\n\017test_basic_bean\030\004 \001(\0132#.cre" +
+      "njoy.protobuf.Basic2TestMessage\022I\n\014test_" +
+      "str_map\030\005 \003(\01323.crenjoy.protobuf.NestedT" +
+      "estMessage.TestStrMapEntry\022\025\n\rtest_str_l" +
+      "ist\030\006 \003(\t\022M\n\016test_basic_map\030\007 \003(\01325.cren" +
+      "joy.protobuf.NestedTestMessage.TestBasic" +
+      "MapEntry\022<\n\017test_basic_list\030\010 \003(\0132#.cren" +
+      "joy.protobuf.Basic2TestMessage\022<\n\021test_m" +
+      "essage_list\030\t \001(\0132!.crenjoy.protobuf.Tes" +
+      "tMessageList\022:\n\020test_message_map\030\n \001(\0132 " +
+      ".crenjoy.protobuf.TestMessageMap\0321\n\017Test" +
+      "StrMapEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:" +
+      "\0028\001\032X\n\021TestBasicMapEntry\022\013\n\003key\030\001 \001(\t\0222\n" +
+      "\005value\030\002 \001(\0132#.crenjoy.protobuf.Basic2Te" +
+      "stMessage:\0028\001\"\335\002\n\022ConvertTestMessage\022\034\n\024" +
+      "test_local_date_time\030\001 \001(\t\022\027\n\017test_local" +
+      "_date\030\002 \001(\t\022\027\n\017test_local_time\030\003 \001(\t\022\024\n\014" +
+      "test_instant\030\004 \001(\t\022\025\n\rtest_duration\030\005 \001(" +
+      "\t\022\035\n\025test_offset_date_time\030\006 \001(\t\022\030\n\020test" +
+      "_offset_time\030\007 \001(\t\022\034\n\024test_zoned_date_ti" +
+      "me\030\010 \001(\t\022\025\n\rtest_str_enum\030\t \001(\t\022\025\n\rtest_" +
+      "int_enum\030\n \001(\005\022\030\n\020test_big_decimal\030\013 \001(\t" +
+      "\022\030\n\020test_big_integer\030\014 \001(\t\022\021\n\ttest_uuid\030" +
+      "\r \001(\tBA\n&org.mapstruct.ap.protobuf.test." +
+      "_targetB\025BasicTestMessageProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -174,8 +180,14 @@ public final class BasicTestMessageProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_crenjoy_protobuf_BasicTestMessageList_descriptor,
         new java.lang.String[] { "TestStrList", });
-    internal_static_crenjoy_protobuf_TestMessageMap_descriptor =
+    internal_static_crenjoy_protobuf_BasicTestIntMessageList_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_crenjoy_protobuf_BasicTestIntMessageList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_crenjoy_protobuf_BasicTestIntMessageList_descriptor,
+        new java.lang.String[] { "TestIntList", });
+    internal_static_crenjoy_protobuf_TestMessageMap_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_crenjoy_protobuf_TestMessageMap_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_crenjoy_protobuf_TestMessageMap_descriptor,
@@ -187,13 +199,13 @@ public final class BasicTestMessageProto {
         internal_static_crenjoy_protobuf_TestMessageMap_TestBasicMapEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_crenjoy_protobuf_TestMessageList_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_crenjoy_protobuf_TestMessageList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_crenjoy_protobuf_TestMessageList_descriptor,
         new java.lang.String[] { "TestBasicList", });
     internal_static_crenjoy_protobuf_NestedTestMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_crenjoy_protobuf_NestedTestMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_crenjoy_protobuf_NestedTestMessage_descriptor,
@@ -211,7 +223,7 @@ public final class BasicTestMessageProto {
         internal_static_crenjoy_protobuf_NestedTestMessage_TestBasicMapEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_crenjoy_protobuf_ConvertTestMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_crenjoy_protobuf_ConvertTestMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_crenjoy_protobuf_ConvertTestMessage_descriptor,

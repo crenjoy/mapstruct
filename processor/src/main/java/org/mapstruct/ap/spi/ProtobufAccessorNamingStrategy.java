@@ -39,16 +39,16 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
     @Override
     public boolean isGetterMethod(ExecutableElement method) {
         boolean getterMethod =  super.isGetterMethod( method );
-        if (!isProtoBufMethod( method )) {
+        if (!isProtobufMethod( method )) {
           return getterMethod;
         }
         String methodName = method.getSimpleName().toString();
         String returnTypeName = typeUtils.erasure( method.getReturnType() ).toString();
-        if (getterMethod && isProtoBufMethod( method ) && !methodName.endsWith( "List" )
+        if (getterMethod && isProtobufMethod( method ) && !methodName.endsWith( "List" )
             && isGetterListMethod( returnTypeName )) {
             return false;
         }
-        if (getterMethod && isProtoBufMethod( method ) && !methodName.endsWith( "Map" )
+        if (getterMethod && isProtobufMethod( method ) && !methodName.endsWith( "Map" )
             && returnTypeName.equals( Map.class.getName() )) {
             return false;
         }
@@ -58,17 +58,17 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
     @Override
     public String getPropertyName(ExecutableElement getterOrSetterMethod) {
         String propertyName = super.getPropertyName( getterOrSetterMethod );
-        if (!isProtoBufMethod( getterOrSetterMethod )) {
+        if (!isProtobufMethod( getterOrSetterMethod )) {
           return propertyName;
         }
 
         String returnTypeName = typeUtils.erasure( getterOrSetterMethod.getReturnType() ).toString();
-        if (isProtoBufMethod( getterOrSetterMethod ) && propertyName.endsWith( "List" )
+        if (isProtobufMethod( getterOrSetterMethod ) && propertyName.endsWith( "List" )
             && isGetterListMethod( returnTypeName )) {
             propertyName = propertyName.substring( 0, propertyName.length() - 4 );
             return propertyName;
         }
-        if (isProtoBufMethod( getterOrSetterMethod ) && propertyName.endsWith( "Map" )
+        if (isProtobufMethod( getterOrSetterMethod ) && propertyName.endsWith( "Map" )
             && returnTypeName.equals( Map.class.getName() )) {
             propertyName = propertyName.substring( 0, propertyName.length() - 3 );
             return propertyName;
@@ -91,7 +91,7 @@ public class ProtobufAccessorNamingStrategy extends DefaultAccessorNamingStrateg
      * @param method
      * @return
      */
-    protected boolean isProtoBufMethod(ExecutableElement method) {
+    public boolean isProtobufMethod(ExecutableElement method) {
         Element receiver = method.getEnclosingElement();
         if (receiver != null && protobufType != null && typeUtils.isAssignable( receiver.asType(), protobufType )) {
             return true;

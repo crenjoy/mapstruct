@@ -348,6 +348,40 @@ public class Type extends ModelElement implements Comparable<Type> {
         return isCollectionType || isMapType;
     }
 
+    /**
+     * CollectionType and typeParameters is Protobuf Primitive.
+     */
+    public boolean isProtobufPrimitiveCollectionType() {
+        if (isCollectionType) {
+            if ("com.google.protobuf.ProtocolStringList".equals( this.qualifiedName )) {
+              return true;
+            }
+            List<Type> typeParameters = getTypeParameters();
+            if ( typeParameters.size() == 1 && typeParameters.get( 0 ).packageName.equals( "java.lang" ) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * MapType and TypeParameters is Protobuf Primitive.
+     */
+    public boolean isProtobufPrimitiveMapType() {
+        if (isMapType) {
+            List<Type> typeParameters = getTypeParameters();
+            if ( typeParameters.size() == 2 && typeParameters.get( 0 ).packageName.equals( "java.lang" )
+                && typeParameters.get( 1 ).packageName.equals( "java.lang" ) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isProtobufPrimitiveCollectionOrMapType() {
+      return isProtobufPrimitiveCollectionType() || isProtobufPrimitiveMapType();
+    }
+
     public boolean isArrayType() {
         return componentType != null;
     }
