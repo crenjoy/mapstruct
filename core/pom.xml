@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.mapstruct</groupId>
+        <groupId>com.gitee.jmash</groupId>
         <artifactId>mapstruct-parent</artifactId>
-        <version>1.6.0-SNAPSHOT</version>
+        <version>1.6.0</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
-
+	<groupId>com.gitee.jmash</groupId>
     <artifactId>mapstruct</artifactId>
     <packaging>jar</packaging>
     <name>MapStruct Core</name>
@@ -35,19 +35,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>check-style</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>checkstyle</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -100,10 +87,6 @@
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.github.siom79.japicmp</groupId>
-                <artifactId>japicmp-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
